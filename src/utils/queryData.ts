@@ -17,7 +17,7 @@ export const getData = async (
   values: Array<string>,
 ): Promise<GetDataResult> => {
   const data = await new Promise((resolve, reject) => {
-    db.get(sql, values, (err, row) => {
+    db.get(sql, values, (err: Error | null, row: object) => {
       if (err) reject(err);
       else resolve(row);
     });

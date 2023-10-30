@@ -48,7 +48,7 @@ export const makePayment = async (req: Request, res: Response) => {
         paymentData.retries,
         paymentData.transferCode,
       ],
-      (err) => {
+      (err: Error | null) => {
         if (err) throw err;
       },
     );

@@ -10,7 +10,7 @@ const app: Express = express();
 
 app.use(express.json());
 
-export const db = new sqlite3.Database("./payments.db", (err) => {
+export const db = new sqlite3.Database("./payments.db", (err: Error | null) => {
   if (err) {
     console.error("Error opening database " + err.message);
   } else {
@@ -22,7 +22,7 @@ export const db = new sqlite3.Database("./payments.db", (err) => {
             retries INTEGER,\
             transfer_code NVARCHAR  NOT NULL\
         )",
-      (err) => {
+      (err: Error | null) => {
         if (err) {
           console.log("Table already exists.");
         }
